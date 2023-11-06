@@ -43,10 +43,11 @@ while True:
     print("6) Create a hotspot")
     print("7) Remove a saved network")
     print("8) Takedown hotspot")
+    print("9) exit")
     print("\n")
     choice = input(": ")
     if choice == "1":
-        result = subprocess.run(['nmcli', "d", "wifi", "list"], stdout=subprocess.PIPE)
+        result = subprocess.run(['sudo','nmcli','d', "wifi", "list"], stdout=subprocess.PIPE)
         print(result.stdout.decode('utf-8'))    
     elif choice == "2":
         result = subprocess.run(['nmcli', "d"], stdout=subprocess.PIPE)
@@ -92,5 +93,9 @@ while True:
         nn = str(input("Hotspot Name: "))
         step5 = subprocess.run(["nmcli","con","down",nn], stdout=subprocess.PIPE)
         print(step5.stdout.decode('utf-8'))
+    elif choice == "9":
+        print("exit, and have a nice day!")
+        exit()
     else:
         print("Invalid choice!")
+
